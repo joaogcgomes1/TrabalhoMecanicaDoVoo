@@ -1,0 +1,152 @@
+EMB110 Bandeirante
+! Mach
+0.0
+! iYsym iZsym	Zsym                            
+0	0	0.0
+! Sref	Cref	Bref                        
+29.0	1.94	15.33   
+! Xref	Yref	Zref              
+0.44	0.0	0.0                  
+
+SURFACE
+Asa
+24 1 40 -1.5                       
+
+YDUPLICATE
+0.0
+
+ANGLE | ( keyword )
+3.0 | dAinc
+
+
+! Perfil aerodinamico: NACA 23016 na raiz, NACA 23012 na ponta
+
+! Seção 1: Raiz da asa
+SECTION 
+! Xle	 Yle 	Zle  Chord Ainc 
+0.0000 0.0000 0.0000 2.42 0.0
+AFILE
+naca23016.dat
+CLAF        
+1.0699        |  dCL/da scaling factor
+CDCL
+  -0.4659  0.00360   -0.0309  0.00335   1.8810  0.00714
+
+! Seção 2: Início do aileron
+SECTION 
+! Xle	 Yle 	Zle  Chord Ainc 
+0.2039 4.8475 0.5952 1.73 0.0
+AFILE
+NACA 23016 - Comeco aileron.dat
+CLAF        
+0.9905        |  dCL/da scaling factor
+CDCL
+  -0.4444  0.00800   -0.0199  0.00745   1.7292  0.01579
+CONTROL | ( keyword )
+aileron 1.0 0.76 0. 0. 0. -1.0 | name , gain , Xhinge , XYZhvec , SgnDup
+
+! Seção 3: Final do aileron
+SECTION 
+! Xle	 Yle 	Zle  Chord Ainc 
+0.3149 7.4889 0.9195 1.3455 0.0
+AFILE
+NACA 23016 - Final aileron.dat
+CLAF        
+0.9916        |  dCL/da scaling factor
+CDCL
+  -0.4418  0.00822   0.0376  0.00753   1.7203  0.01577
+CONTROL | ( keyword )
+aileron 1.0 0.78 0. 0. 0. -1.0 | name , gain , Xhinge , XYZhvec , SgnDup
+
+! Seção 4: Ponta da asa
+SECTION
+! Xle	 Yle 	Zle  Chord Ainc 
+0.3223 7.665 0.9411 1.32 0.0
+AFILE
+naca23012.dat
+CLAF        
+0.987        |  dCL/da scaling factor
+CDCL
+  -0.4384  0.00805   -0.0275  0.00745   1.7275  0.01541
+
+! Empenagem Horizontal
+SURFACE
+Empenagem Horizontal
+24 1 40 -1.5                         
+
+YDUPLICATE
+0.0
+
+ANGLE | ( keyword )
+0.0 | dAinc
+
+! Perfil aerodinamico: NACA 0012 (aproximacao)
+
+! Seção 1: Raiz do profundor
+SECTION 
+! Xle	 Yle 	Zle  Chord Ainc 
+0.0000 0.0000 0.0000 1.60 0.0
+AFILE
+naca0012.dat
+CLAF
+1.0047
+CDCL
+-0.5746  0.00772   -0.0807  0.00728   1.6180  0.01443
+CONTROL | ( keyword )
+elevator 1.0 0.58 0. 0. 0. 1.0 | name , gain , Xhinge , XYZhvec , SgnDup
+
+! Seção 2: Ponta do profundor
+SECTION 
+! Xle	 Yle 	Zle  Chord Ainc 
+0.3722 3.8121 0.0000 1.0016 0.0
+AFILE
+naca0012.dat
+CLAF
+0.9957
+CDCL
+-0.5720  0.00835   -0.0230  0.00784   1.5988  0.01590
+CONTROL | ( keyword )
+elevator 1.0 0.5 0. 0. 0. 1.0 | name , gain , Xhinge , XYZhvec , SgnDup
+
+TRANSLATE
+6.8609 0.0 1.3649
+
+! Empenagem Vertical
+SURFACE
+Empenagem Vertical
+24 1 40 -1.5                        
+
+ANGLE | ( keyword )
+0.0 | dAinc
+
+! Perfil aerodinamico: NACA 0012 (aproximacao)
+
+! Seção 1: Raiz do leme
+SECTION 
+! Xle	 Yle 	Zle  Chord Ainc 
+0.0000 0.0000 0.0000 2.0254 0.0
+AFILE
+naca0012.dat
+CLAF
+1.0156
+CDCL
+-0.5756  0.00747   -0.0809  0.00702   1.5078  0.01322
+CONTROL | ( keyword )
+rudder 1.0 0.52 0. 0. 0. 1.0 | name , gain , Xhinge , XYZhvec , SgnDup
+
+! Seção 2: Ponta do leme
+SECTION 
+! Xle	 Yle 	Zle  Chord Ainc 
+1.7412 0.0000 2.3847 1.1571 0.0
+AFILE
+naca0012.dat
+CLAF
+0.9987
+CDCL
+-0.5728  0.00815   -0.0460  0.00766   1.6059  0.01536
+CONTROL | ( keyword )
+rudder 1.0 0.49 0. 0. 0. 1.0 | name , gain , Xhinge , XYZhvec , SgnDup
+
+TRANSLATE
+6.00 0.0 1.7190
+

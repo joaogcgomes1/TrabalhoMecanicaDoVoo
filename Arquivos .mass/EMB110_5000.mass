@@ -1,0 +1,13 @@
+# Parâmetros de massa do EMB110 - Bandeirante
+Lunit = 1 m
+Munit = 1 kg
+Tunit = 1.0 s
+
+g   = 9.78
+rho = 0.905
+
+#
+#  mass   x     y     z      Ixx     Iyy     Izz   [ Ixy  Ixz  Iyz ]
+#
+  5000   0.63   0.0   0.0    33958.7861   19849.1854  51129.9440     ! peso baixo
+   
